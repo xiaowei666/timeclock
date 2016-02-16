@@ -1,0 +1,62 @@
+@keyframes show {
+  0%{
+
+  }
+
+}
+//旋转
+@keyframes hide {
+  0%{
+    transform:rotateZ(0);
+  }
+  100%{
+    transform:rotateZ(360);
+  }
+}
+*[data-a*=animate-hide]{
+  animation:hide 2s ease infinite;
+}
+//圆周运动
+@r:30;
+@a:0;
+@p:10;
+@num:360/@p;
+.round(@i:0) when (@i<=@num){
+  @select:100/@num*@i*1%;
+  @a:@p*@i;
+  @{select}{
+    transform: translate(cos(@a*pi()/180)*@r*1px,sin(@a*pi()/180)*@r*1px);
+  }
+  .round(@i+1);
+}
+@keyframes round {
+.round()
+
+}
+*[data-a*=animate-round]{
+  animation:round 2s ease infinite;
+}
+//曲线运动
+@r:30;
+@a:0;
+@r1:10;
+@p:3;
+@a1:0;
+@p1:6;
+@num:360/@p;
+.quxian(@i:0) when (@i<=@num){
+  @select:100/@num*@i*1%;
+  @a:@p*@i;
+    @a1:@p1*@ai;
+  @{select}{
+    transform: translate(cos(@a*pi()/180)*@r*1px,sin(@a1*pi()/180)*@r1*1px);
+  }
+  .quxian(@i+1);
+}
+@keyframes quxian {
+  .quxian()
+
+}
+*[data-role-animate-quxian]{
+  animation:quxian 2s ease infinite;
+}
